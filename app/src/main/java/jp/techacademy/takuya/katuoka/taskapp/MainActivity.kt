@@ -10,8 +10,10 @@ import android.content.Intent
 import android.support.v7.app.AlertDialog
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.support.v7.widget.SearchView
 
 const val EXTRA_TASK = "jp.techacademy.taro.kirameki.taskapp.TASK"
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mRealm: Realm
