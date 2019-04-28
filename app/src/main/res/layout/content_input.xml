@@ -21,7 +21,7 @@
               android:hint="内容"/>
     <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
               android:id="@+id/category_edit_text"
-              android:layout_below="@+id/title_edit_text"
+              android:layout_below="@+id/content_edit_text"
               android:hint="カテゴリー"/>
     <Button android:layout_width="0dp" android:layout_height="wrap_content"
             android:id="@+id/date_button"
