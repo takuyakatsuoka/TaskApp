@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.support.v7.widget.SearchView
+import android.view.View
 
 const val EXTRA_TASK = "jp.techacademy.taro.kirameki.taskapp.TASK"
 
@@ -83,7 +84,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             builder.setNegativeButton("CANCEL", null)
-
             val dialog = builder.create()
             dialog.show()
 
@@ -92,6 +92,11 @@ class MainActivity : AppCompatActivity() {
 
         reloadListView()
     }
+
+    override fun onClick(v: View) {
+        mRealm.where(Task::class.java).equalTo("id",findall())
+    }
+
 
     private fun reloadListView() {
     // Realmデータベースから、「全てのデータを取得して新しい日時順に並べた結果」を取得
