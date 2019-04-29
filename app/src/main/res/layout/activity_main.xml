@@ -20,6 +20,15 @@
         android:layout_margin="16dp"
         android:src="@drawable/plus"
         app:backgroundTint="@color/colorPrimary"/>
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text = "検索"
+            android:id="@+id/button1"/>
 
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text = "TextView"
+              android:id="@+id/textView"/>
+
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:id="@+id/editText"/>
 
 </android.support.design.widget.CoordinatorLayout>
