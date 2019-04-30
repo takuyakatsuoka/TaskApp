@@ -16,7 +16,7 @@ import android.view.View
 const val EXTRA_TASK = "jp.techacademy.taro.kirameki.taskapp.TASK"
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var mRealm: Realm
     private val mRealmListener = object : RealmChangeListener<Realm> {
         override fun onChange(element: Realm) {
@@ -29,11 +29,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        button1.setOnClickListener(this)
 
         fab.setOnClickListener { view ->
             val intent = Intent(this@MainActivity, InputActivity::class.java)
             startActivity(intent)
         }
+
+
 
         // Realmの設定
         mRealm = Realm.getDefaultInstance()
@@ -94,7 +97,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onClick(v: View) {
-        mRealm.where(Task::class.java).equalTo("id",findall())
+
+
+        val taskRealmResults = mRealm.where(Task::class.java).equalTo("id",5L).findAll()
+
+        // 上記の結果を、TaskList としてセットする
+        mTaskAdapter.taskList = mRealm.copyFromRealm(taskRealmResults)
+
+        // TaskのListView用のアダプタに渡す
+        listView1.adapter = mTaskAdapter
+
+        // 表示を更新するために、アダプターにデータが変更されたことを知らせる
+        mTaskAdapter.notifyDataSetChanged()
     }
 
 
